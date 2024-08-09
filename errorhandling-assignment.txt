@@ -1,0 +1,167 @@
+const arr=[]
+function addToCart(product){
+    try{
+        if(product.name===''){
+        throw new Error('input the name')
+    }
+    if(product.price<0){
+        throw new Error('invalid product price')
+    }
+    if(typeof(Number.isInteger(product.quantity))){
+         throw new Error('invalid product quantity')
+    }
+   
+     arr.push({price:product.price,name:product.name,quantity:product.quantity})
+   } catch(err){
+        console.error(`Error:${err.message}`)
+    }
+    
+   
+}
+
+    
+const p1={
+    price:2000,
+    name:"earphones",
+    quantity:"ABC"
+}
+const p2={
+    price:2000,
+    name:"",
+    quantity:1
+}
+const p3={
+    price:-5,
+    name:"appliance",
+    quantity:1
+}
+
+addToCart(p1)
+addToCart(p2)
+addToCart(p3)
+
+
+ if(arr.length===0){
+        console.log("go to the checkout section")
+        checkout()
+    }
+    function checkout(){
+        console.log("your cart is empty")
+    }
+
+
+ERROR!
+Error:invalid product quantity
+ERROR!
+Error:input the name
+Error:invalid product price
+go to the checkout section
+your cart is empty
+
+2.
+
+const userinfo=[]
+
+function logIn(user){
+    try{
+        if(user.name===''){
+            throw new Error("Username is required")
+        }
+        if(user.password==='')
+        {
+            throw new Error("password is required")
+        }
+        if(typeof user.name !=="string" )
+        {
+            throw new Error("invalid username")
+        }
+        if( typeof user.password!=="string"){
+            throw new Error("invalid passcode")
+        }
+        if( typeof user.password!=="string" && typeof user.name !=="string"){
+            throw new Error("invalid passcode and invalid username")
+        }
+        userinfo.push({name:user.name,password:user.password})
+    }catch(err){
+        console.error(`Error: ${err.message}`)
+    }
+}
+const user1={
+    name:"sameeksha",
+    password:"sam1234"
+}
+
+const user2={
+    name:"saniya",
+    password:1234
+}
+const user3={
+    name:1233384944,
+    password:1234
+}
+logIn(user2)
+logIn(user1)
+logIn(user3)
+console.log(userinfo)//it only has the user1 data
+
+
+ERROR!
+Error: invalid passcode
+ERROR!
+Error: invalid username
+[ { name: 'sameeksha', password: 'sam1234' } ]
+
+
+3.
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("Try programiz.pro");
+const customer=[]
+function processpayment(processReq){
+    const d =new Date()
+    const year=d.getFullYear()//todays date
+    
+    const cd= new Date(processReq.date)//if the date is in string or other type it will convert it into the date object
+    const c=cd.getFullYear()
+    
+ 
+    try{
+        if(processReq.amt<0){
+            throw new Error("invalid paymentamount")
+            
+        }
+        if(processReq.cardno ===''){
+            throw new Error("invalid card number")
+        }
+         
+        if(cd<d){
+            throw new Error("the date has been expired")
+        }
+        customer.push({amt:processReq.amt,cardno:processReq.cardno,date:processReq.date})
+    }catch(err){
+        console.error(`Error:${err.message}`)
+    }
+}
+
+const c1={
+    amt:3000,
+    cardno:"1234-5678-1234-1234",
+    date:'2025-01-10'
+}
+
+const c2={
+    amt:3000,
+    cardno:"1234-5678-1234-1234",
+    date:'2022-08-09T17:46:01.568Z'
+}
+processpayment(c1)
+processpayment(c2)
+
+console.log(customer)
+
+
+ERROR!
+Error:the date has been expired
+[ { amt: 3000, cardno: '1234-5678-1234-1234', date: '2025-01-10' } ]
+
